@@ -44,5 +44,8 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/iyegoroff/react-native-collapsible-header-views.git"
+  },
+  "publishConfig": {
+    "registry": "http://192.168.85.5:8081/nexus/repository/npm-hosted/"
   }
 }
