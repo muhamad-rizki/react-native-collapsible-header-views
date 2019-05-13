@@ -10,6 +10,12 @@ export type CollapsibleHeaderProps = {
   hideHeader: (options: AnimationConfig | unknown) => void
 }
 
+export type CollapsibleFooterProps = {
+  interpolatedFooterTranslation: InterpolatedHeaderTranslation
+  showFooter: (options: AnimationConfig | unknown) => void
+  hideFooter: (options: AnimationConfig | unknown) => void
+}
+
 export type CollapsibleHeaderViewProps<T extends ScrollViewProps> = T & {
   readonly CollapsibleHeaderComponent: React.ReactElement<unknown>
     | React.ComponentType<CollapsibleHeaderProps>
@@ -17,7 +23,16 @@ export type CollapsibleHeaderViewProps<T extends ScrollViewProps> = T & {
   readonly statusBarHeight?: number
   readonly headerContainerBackgroundColor?: string
   readonly disableHeaderSnap?: boolean
+  readonly stickyHeader?: boolean
   readonly headerAnimationDuration?: number
+  
+  readonly CollapsibleFooterComponent: React.ReactElement<unknown>
+    | React.ComponentType<CollapsibleHeaderProps>
+  readonly footerHeight: number
+  readonly footerContainerBackgroundColor?: string
+  readonly disableFooterSnap?: boolean
+  readonly stickyFooter?: boolean
+  readonly footerAnimationDuration?: number
 }
 
 declare class CollapsibleHeaderView<T extends ScrollViewProps> extends React.Component<
@@ -25,7 +40,10 @@ declare class CollapsibleHeaderView<T extends ScrollViewProps> extends React.Com
 > {
   public showHeader: (options: AnimationConfig | unknown) => void
   public hideHeader: (options: AnimationConfig | unknown) => void
+  public showFooter: (options: AnimationConfig | unknown) => void
+  public hideFooter: (options: AnimationConfig | unknown) => void
   public animatedComponent: () => any | null
+  public getNode: () => any | null
 }
 
 export declare class CollapsibleHeaderScrollView extends CollapsibleHeaderView<ScrollViewProps> { }
